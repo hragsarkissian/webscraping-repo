@@ -2,7 +2,7 @@
 
 This is a demonstration of basic web scraping that is implemented on server-side and saved into the database for every link posted on the entire platform.
 
-Web Scraping in the class of web api controller.
+//Web Scraping in the class of web api controller.
 
 [Route, HttpPost]
 

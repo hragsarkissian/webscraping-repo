@@ -1,10 +1,14 @@
 # webscraping-repo
+
 This is a demonstration of basic web scraping that is implemented on server-side and saved into the database for every link posted on the entire platform.
 
 Web Scraping in the class of web api controller.
+
 [Route, HttpPost]
+
         public HttpResponseMessage Post(LinksAddRequest model)
         {
+        
             var url = model.Url;
             var webGet = new HtmlAgilityPack.HtmlWeb();
             HtmlAgilityPack.HtmlDocument doc = webGet.Load(url);

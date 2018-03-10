@@ -1,0 +1,28 @@
+public class LinksService : BaseService, ILinksService
+{
+    public int Insert(LinksAddRequest model)
+    {
+        int id = 0;
+        this.DataProvider.ExecuteNonQuery(
+            "Project_Links_Insert",
+            inputParamMapper: delegate (SqlParameterCollection paramCol)
+            {
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@Id";
+                param.SqlDbType = System.Data.SqlDbType.Int;
+                param.Direction = System.Data.ParameterDirection.Output;
+                paramCol.Add(param);
+
+                paramCol.AddWithValue("Title", model.Title);
+                paramCol.AddWithValue("Description", model.Description);
+                paramCol.AddWithValue("Url", model.Url);
+                paramCol.AddWithValue("Image", model.Image);
+                paramCol.AddWithValue("ModifiedBy", model.ModifiedBy);
+            },
+            returnParameters: delegate (SqlParameterCollection paramCol)
+            {
+                id = (int)paramCol["@Id"].Value;
+            }
+        );
+        return id;
+    }

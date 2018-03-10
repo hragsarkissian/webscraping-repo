@@ -1,0 +1,15 @@
+using System.Collections.Generic;
+using RockStarLab.Models.Domain;
+using RockStarLab.Models.Requests;
+
+namespace RockStarLab.Services.Interfaces
+{
+    public interface ILinksService
+    {
+        void Delete(int id);
+        int Insert(LinksAddRequest model);
+        List<LinksProfile> SelectAll();
+        LinksProfile SelectById(int id);
+        void Update(LinksUpdateRequest model);
+    }
+}
